@@ -9,10 +9,15 @@ module MapboxApi
       Mapbox.access_token = ENV["MAPBOX_API_KEY"]
     end
 
+    ## ###########################
+    ## Function:      find    
+    ## Description:   It uses Mapbox forward geocoding function to get places around the given proximity.
+    ## Output:        Returns the Mapbox Api response.
     def find
       placenames = []
       begin
-        placenames = Mapbox::Geocoder.geocode_forward(@search_text, 
+        placenames = Mapbox::Geocoder.geocode_forward(
+          @search_text, 
           {:proximity => {:longitude => @lng, :latitude => @lat}}
           )
       rescue Exception => e

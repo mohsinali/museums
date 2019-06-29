@@ -15,7 +15,7 @@ class Api::V1::MuseumsController <  Api::V1::ApiController
     end
 
     ## Call Mapbox Api to get places data
-    @places = Places.new(params[:lat].to_f, params[:lng].to_f, 'museums').find()
+    @places = Places.new(params[:lat].to_f, params[:lng].to_f, 'museum').find()
     
     ## Extract and format data from api response
     data = extract_data(@places)

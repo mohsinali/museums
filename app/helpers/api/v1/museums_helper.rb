@@ -1,5 +1,10 @@
 module Api::V1::MuseumsHelper
   
+  ## ###########################
+  ## Function:      extract_data
+  ## @param         places  [A hash of Mapbox Api response]
+  ## Description:   It traverse the places hash to get the data.
+  ## Output:        Returns a hash of places grouped by postcodes.
   def extract_data places
     postcodes = {}
     places.first['features'].each do |feature|      
@@ -21,15 +26,17 @@ module Api::V1::MuseumsHelper
   ## @param         feature
   ## Description:   It takes a hash with key 'feature' from MapboxApi response.
   ##                Finds a postcode from a nested hash with key 'context'
+  ## Output:        A string of postcode or wikidata.
   def get_postcode feature
     p_code = ""
-    feature['context'].each do |cxt|
-      if cxt['id'].include?('postcode')
-        p_code = cxt['text']
-      end
-    end
+    
+    ## First try to find postcode. If found, return postcode.
+    p_code = feature['context'].find{|cxt| cxt['id'].include?('postcode')}
+    return p_code['text'] unless p_code.nil?
 
-    return p_code
+    ## If postcode is not found, then try to find wikidata
+    p_code = feature['context'].find{|cxt| cxt['id'].include?('locality')}
+    return p_code['wikidata'] unless p_code.nil?
   end
 
   
