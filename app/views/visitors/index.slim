@@ -1,0 +1,59 @@
+.jumbotron
+  h1.display-4 Museums API
+  footer.blockquote-footer
+    | Built for
+    cite title=("mercedes-benz.io")  Mercedes-Benz.io
+
+  br
+  p.lead Uses MapboxApi to fetch data. Groups the data by postcodes.
+  hr.my-4/
+  
+  
+  h3
+    | Technical Specs
+
+  p 
+    strong Ruby: 
+    | 2.4.1
+    br
+    strong Rails: 
+    | 5.2
+    br
+    strong Database: 
+    | Postgresql
+    br
+    strong Github Repository: 
+    a href="https://github.com/mohsinali/museums"
+      | https://github.com/mohsinali/museums
+    br
+    strong API Documentation: 
+    a href = "https://documenter.getpostman.com/view/262458/S1a7UQnL?version=latest"
+      | https://documenter.getpostman.com/view/262458/S1a7UQnL?version=latest
+  
+  br
+  h3
+    | Setup
+
+  p
+    ul.list-unstyled
+      li 
+        | - Inside project directory run 
+        kbd bundle install
+
+      li
+        | - Update <kbd>database.yml</kbd> with your database(Postgres) username and password.
+
+      li
+        | - Run <kbd>rails db:migrate</kbd>
+      
+      li
+        | - Run <kbd>rails db:seed</kbd>
+
+      li
+        | - Run <kbd>rails s</kbd>
+
+      li
+        | - Run <kbd>rspec</kbd> for tests.
+  / p.lead
+  /   | Hello some thing comes here.
+
